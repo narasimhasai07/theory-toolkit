@@ -1,0 +1,8 @@
+\contentsline {chapter}{Lecture \numberline {01}($\beta $) {Pigeon Hole Principle and Basic Applications}}{ii}{section*.5}%
+\contentsline {section}{\numberline {1.1}Example 1}{ii}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Example 2}{ii}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Example 3}{ii}{section.1.3}%
+\contentsline {chapter}{Lecture \numberline {02}($\alpha $) {Pigeon Hole Principle - More Applications}}{iii}{section*.8}%
+\contentsline {section}{\numberline {2.1}Example 1}{iii}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Example 2}{iii}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Example 3}{iii}{section.2.3}%

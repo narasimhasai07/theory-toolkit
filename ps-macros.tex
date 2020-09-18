@@ -1,0 +1,136 @@
+\usepackage{hypcap}
+\renewcommand{\E}{{\mathbb E}}
+
+\usepackage{todonotes}
+\newcounter{todocounter}
+\newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
+\newcommand{\jsay}[1]{\todonum[inline,color=red!20]{\small Jayalal says: Todo - #1}}
+
+% modified exercise enviornment to use with collect  package
+\usepackage{enumerate}
+\newcounter{excount}
+\setcounter{excount}{0}
+\theoremstyle{definition}
+\newtheorem{ex}[section]{Exercise}
+\newtheorem{curious}[theorem]{Curiosity}
+% for exercises which are problem set questions
+
+\newtheorem{exercise-prob}[section]{Exercise}
+\theoremstyle{plain}	    
+%%%%%%%%%%%%%%%%%%%% Exercise and pset macros (start) %%%%%%%%%%%%%%%%%%%%%%%5
+% For problem set back reference.
+\def\psetbackref{1}
+
+% For Curiosity Drive
+\definecollection{curious.tmp}
+\makeatletter
+\newenvironment{curiousity}
+    {\@nameuse{collect*}{curious.tmp}
+		  {\begin{curious}}
+		    {\end{curious}}{}{}
+    }{\@nameuse{endcollect*}}
+\makeatother
+
+% For exercise
+\definecollection{ex.tmp}
+\makeatletter
+\newenvironment{exercise}
+    {\@nameuse{collect*}{ex.tmp}
+		  {\begin{ex}}
+		    {\end{ex}}{}{}
+    }{\@nameuse{endcollect*}}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To create a a new pset with pset number n, copy paste the following code
+% with XX replaced by n.
+%
+% 	 \definecollection{psXX.tmp}
+%	 \makeatletter
+%	 \newenvironment{show-psXX}[1]
+%	     {\@nameuse{collect*}{psXX.tmp}
+%	         {\ifthenelse{ \equal{\psetbackref}{1} }{\label{prob:#1}}{}} {}
+%   	         {\item \label{#1} (See Exercise~\ref{prob:#1})} {}
+%	     }{\@nameuse{endcollect*}}
+%	 \makeatother
+%
+%	 \makeatletter
+%	 \newenvironment{psXX}
+%	     {\@nameuse{collect}{psXX.tmp}
+%			{\item}{}
+%	     }{\@nameuse{endcollect}}
+%	 \makeatother
+%
+% 
+
+%%% For ps1 
+\definecollection{ps1.tmp}
+\makeatletter
+\newenvironment{show-ps1}[1]
+    {\@nameuse{collect*}{ps1.tmp}
+	    {\ifthenelse{ \equal{\psetbackref}{1} }			{\label{prob:#1}}{}} {}
+	    {\item \label{#1} (See Exercise~\ref{prob:#1})} {}
+    }{\@nameuse{endcollect*}}
+\makeatother
+
+\makeatletter
+\newenvironment{ps1}
+    {\@nameuse{collect}{ps1.tmp}
+		{\item }{}
+    }{\@nameuse{endcollect}}
+\makeatother
+
+%%% For ps2
+\definecollection{ps2.tmp}
+\makeatletter
+\newenvironment{show-ps2}[1]
+    {\@nameuse{collect*}{ps2.tmp}
+	    {\ifthenelse{ \equal{\psetbackref}{1} }{\label{prob:#1}}{}} {}
+	    {\item \label{#1} (See Exercise~\ref{prob:#1})} {}
+    }{\@nameuse{endcollect*}}
+\makeatother
+
+\makeatletter
+\newenvironment{ps2}
+    {\@nameuse{collect}{ps2.tmp}
+		{\item}{}
+    }{\@nameuse{endcollect}}
+\makeatother
+
+%%% For ps3
+\definecollection{ps3.tmp}
+\makeatletter
+\newenvironment{show-ps3}[1]
+    {\@nameuse{collect*}{ps3.tmp}
+	    {\ifthenelse{ \equal{\psetbackref}{1} }{\label{prob:#1}}{}} {}
+	    {\item \label{#1} (See Exercise~\ref{prob:#1})} {}
+    }{\@nameuse{endcollect*}}
+\makeatother
+
+\makeatletter
+\newenvironment{ps3}
+    {\@nameuse{collect}{ps3.tmp}
+		{\item}{}
+    }{\@nameuse{endcollect}}
+\makeatother
+
+
+%%% For ps3
+\definecollection{ps4.tmp}
+\makeatletter
+\newenvironment{show-ps4}[1]
+    {\@nameuse{collect*}{ps4.tmp}
+	    {\ifthenelse{ \equal{\psetbackref}{1} }{\label{prob:#1}}{}} {}
+	    {\item \label{#1} (See Exercise~\ref{prob:#1})} {}
+    }{\@nameuse{endcollect*}}
+\makeatother
+
+\makeatletter
+\newenvironment{ps4}
+    {\@nameuse{collect}{ps4.tmp}
+		{\item}{}
+    }{\@nameuse{endcollect}}
+\makeatother
+
+%%%%% Exercise and pset macros (end) %%%%%

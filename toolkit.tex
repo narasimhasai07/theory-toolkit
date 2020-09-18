@@ -1,0 +1,179 @@
+\documentclass[11pt]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,amsthm,amsmath}
+\usepackage{mathtools}
+\usepackage{complexity}
+\usepackage[chapter]{algorithm}
+\usepackage{algpseudocode,caption} 
+\usepackage{graphicx}
+\usepackage{relsize}
+\usepackage{tikz}  %TikZ central library is called.
+%\usepackage{tkz-graph}
+%	\usepackage{tkz-berge}
+%\usepackage{tikz-network}
+\usetikzlibrary{automata,positioning,calc}
+
+\usepackage{tocloft}
+\usepackage{palatino}
+
+\RequirePackage[colorlinks=true]{hyperref}
+\hypersetup{
+  linkcolor=[rgb]{0.3,0.3,0.6},
+  citecolor=[rgb]{0.2, 0.6, 0.2},
+  urlcolor=[rgb]{0.6, 0.2, 0.2}
+}
+
+\usepackage{setspace}
+\onehalfspacing
+
+
+\usepackage{xcolor}
+\usepackage{color}
+\definecolor{delta}{rgb}{0,0.2,0}
+\definecolor{gamma}{rgb}{0,0,0.2}
+\definecolor{beta}{rgb}{0.2,0,0}
+\definecolor{alpha}{rgb}{0.8,0,0}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\sse}{\subseteq}
+\newcommand{\zo}{\{0,1\}}
+\newcommand{\zon}{\zo^n}
+\newcommand{\aphantom}{\vphantom{2^2}}
+\newcommand{\aaphantom}{\vphantom{2^{2^2}}}
+\newcommand{\defn}{\stackrel{\text{\tiny def}}{=}}
+
+% left-right wrappers
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\card}[1]{\left|#1 \right|}
+\newcommand{\mytilde}[1]{\overset{\sim}{#1}}
+
+% latin
+\newcommand{\etal}{\textit{et al}.\@\xspace}
+\newcommand{\ie}{i.e.}
+\usepackage[all]{xy}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{preamble.tex}
+\usepackage{collect}
+\input{ps-macros.tex}
+\renewcommand{\E}{{\mathbb E}}
+\title{{\huge CS5130 : Mathematical Tools for Theoretical Computer Science} \\[3mm]
+{\LARGE(Scribe Lecture Notes)}\\[1cm]}
+\author{{\Large Lecturer : {\sc Jayalal Sarma}} \\[3mm]
+Department of Computer Science and Engineering \\[1mm]
+Indian Institute of Technology Madras (IITM)\\[1mm]
+Chennai, India}
+\date{Last updated on : \today}
+
+
+\begin{document}
+\maketitle
+\setcounter{page}{1}
+
+\newpage
+\pagenumbering{roman}  % Roman numbering in intro portion.
+\input{preface.tex}
+
+\newpage
+\listofscribe
+\newpage
+\tableofcontents
+\newpage
+\listoftodos
+\setcounter{page}{1}
+\setstretch{1.1}
+
+\input{lecture01.tex}
+\input{lecture02.tex}
+%\input{lecture03.tex}
+%\input{lecture04.tex}
+%\input{lecture05.tex}
+%\input{lecture06.tex}
+%\input{lecture07.tex}
+%\input{lecture08.tex}
+%\input{lecture09.tex}
+%\input{lecture10.tex}
+%\input{lecture11.tex}
+%\input{lecture12.tex}
+%\input{lecture13.tex}
+%\input{lecture14.tex}
+%\input{lecture15.tex}
+%\input{lecture16.tex}
+%\input{lecture17.tex}
+%\input{lecture18.tex}
+%\input{lecture19.tex}
+%\input{lecture20.tex}
+%\input{lecture21.tex}
+%\input{lecture22.tex}
+%\input{lecture23.tex}
+%\input{lecture24.tex}
+%\input{lecture25.tex}
+%\input{lecture26.tex}
+%\input{lecture27.tex}
+%\input{lecture28.tex}
+%\input{lecture29.tex}
+%\input{lecture30.tex}
+%\input{lecture31.tex}
+%\input{lecture32.tex}
+%\input{lecture33.tex}
+%\input{lecture34.tex}
+%\input{lecture35.tex}
+%\input{lecture36.tex}
+%\input{lecture37.tex}
+%\input{lecture38.tex}
+%\input{lecture38.tex}
+%\input{lecture40.tex}
+%\input{lecture41.tex}
+%\input{lecture42.tex}
+
+%\input{problemsets.tex}
+
+%\part{Exercise \& Problem Sets}
+%\chapter{Exercises}
+%\newpage
+%\section{Exercises}
+%\setcounter{excount}{0}
+%\includecollection{ex.tmp}
+
+\newpage
+
+%\section{~Curiosity Drive}
+%Here we list down all the "out of curious" questions that we discussed (sometimes even not discussed) in the class (and hence in this document).
+%\includecollection{curious.tmp}
+%
+%% Convention : Call all problem set collection names with psXX.tmp This helps in managing the auxillary files created by collect package.Give back reference to problems in lectures.
+%\def\psetbackref{0}
+%
+%\chapter{Problem Sets}
+
+%\section{~Problem Set \#1}
+%\begin{enumerate}[(1)]
+%\includecollection{ps1.tmp}
+%\end{enumerate}
+%
+%\newpage
+%\section{~Problem Set \#2}
+%
+%\begin{enumerate}[(1)]
+%\includecollection{ps2.tmp}
+%\end{enumerate}
+%
+%\newpage
+%\section{~Problem Set \#3}
+%
+%\begin{enumerate}[(1)]
+%\includecollection{ps3.tmp}
+%\end{enumerate}
+%
+%\newpage
+%\section{~Problem Set \#4}
+%
+%\begin{enumerate}[(1)]
+%\includecollection{ps4.tmp}
+%\end{enumerate}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

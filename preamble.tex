@@ -1,0 +1,215 @@
+\newtheoremstyle{myplain}{10pt}{10pt}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{mydefinition} {10pt}{10pt}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{myremark}     {10pt}{10pt}{}{}{\scshape}{.}{.5em}{}
+\newcounter{lecture}
+\theoremstyle{myplain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition} [theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact} [theorem]{Fact}
+\theoremstyle{mydefinition}
+\newtheorem{definition} [theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{openproblem}[theorem]{Open Problem}
+\newtheorem{problem} [theorem]{Problem}
+\theoremstyle{myremark}
+\newtheorem{remark} [theorem]{Remark}
+\newtheorem{conjecture} [theorem]{Conjecture}
+\newtheorem{observation}[theorem]{Observation}
+%\newtheorem{exercise}{Exercise}
+
+\numberwithin{equation} {lecture}
+\numberwithin{figure}{lecture}
+\numberwithin{table}{lecture}
+\newcommand{\cupdot}{\mathbin{\mathaccent\cdot\cup}}
+\newcommand{\bigsum}{\mathlarger{\mathlarger{\sum}}}
+\newcommand{\bigger}[1]{\mathlarger{\mathlarger{#1}}}
+\renewcommand{\bar}[1]{\overline{\vphantom{1^a}#1}}
+%\renewcommand{\fnum@figure}{\textsc{Figure~\thefigure}}
+%\renewcommand{\fnum@table}{\textsc{Table~\thetable}}
+
+\theoremstyle{plain}
+
+\newenvironment{proof-sketch}{\noindent{\bf Sketch of Proof}\hspace*{1em}}{\qed\bigskip}
+\newenvironment{proof-idea}{\noindent{\bf Proof Idea}\hspace*{1em}}{\qed\bigskip}
+\newenvironment{proof-of-lemma}[1]{\noindent{\bf Proof of Lemma #1}\hspace*{1em}}{\qed\bigskip}
+\newenvironment{proof-attempt}{\noindent{\bf Proof Attempt}\hspace*{1em}}{\qed\bigskip}
+\newenvironment{proofof}[1]{\noindent{\bf Proof}
+of #1:\hspace*{1em}}{\qed\bigskip}
+
+\renewcommand{\qedsymbol}{\leavevmode
+  \hbox to.77778em{%
+  \hfil\vrule
+  \vbox to.875em{\hrule width.35em\vfil\hrule}%
+  \vrule\hfil}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Exp}[1]{\mathify{\mbox{Exp}\left[#1\right]}}
+\newcommand{\bigO}O
+%\newcommand{\set}[1]{\mathify{\left\{ #1 \right\}}}
+\def\half{\frac{1}{2}}
+\newcommand{\V}[1]{\mathsf{Var}[#1]}
+\def\implies{\Rightarrow}
+\def\prob#1#2{{\mathop{{\rm Prob}}_{#1}}\left[#2 \right]}
+\def\var#1#2{{\mathop{{\rm Var}}_{#1}}[#2]}
+\def\expec#1#2{{\mathop{{\rm E}}_{#1}}[#2]}
+\def\sizeof#1{\left| #1\right|}
+\def\setof#1{\left\{ #1\right\}  }
+\newcommand\norm[1]{{\left\lVert#1\right\rVert}_2}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\supp}{{\mathsf{supp}}}
+%\newcommand{\qed}{\rule{7pt}{7pt}}
+\newcommand*\circled[1]{~\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.5pt] (char) {\tiny #1};}~}
+           
+\newcommand{\FOR}{{\bf for}}
+\newcommand{\TO}{{\bf to}}
+\newcommand{\DO}{{\bf do}}
+\newcommand{\WHILE}{{\bf while}}
+\newcommand{\AND}{{\bf and}}
+\newcommand{\IF}{{\bf if}}
+\newcommand{\THEN}{{\bf then}}
+\newcommand{\ELSE}{{\bf else}}
+\newcommand{\N}{\mathbb{N}}
+
+% \renewcommand{\thefigure}{\thesection.\arabic{figure}}
+% \renewcommand{\thetable}{\thesection.\arabic{table}}
+% \renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+% Calligraphic letters
+\newcommand{\calA}{{\cal A}}
+\newcommand{\calB}{{\cal B}}
+\newcommand{\calC}{{\cal C}}
+\newcommand{\calD}{{\cal D}}
+\newcommand{\calE}{{\cal E}}
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calG}{{\cal G}}
+\newcommand{\calH}{{\cal H}}
+\newcommand{\calI}{{\cal I}}
+\newcommand{\calJ}{{\cal J}}
+\newcommand{\calK}{{\cal K}}
+\newcommand{\calL}{{\cal L}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\calN}{{\cal N}}
+\newcommand{\calO}{{\cal O}}
+\newcommand{\calP}{{\cal P}}
+\newcommand{\calQ}{{\cal Q}}
+\newcommand{\calR}{{\cal R}}
+\newcommand{\calS}{{\cal S}}
+\newcommand{\calT}{{\cal T}}
+\newcommand{\calU}{{\cal U}}
+\newcommand{\calV}{{\cal V}}
+\newcommand{\calW}{{\cal W}}
+\newcommand{\calX}{{\cal X}}
+\newcommand{\calY}{{\cal Y}}
+\newcommand{\calZ}{{\cal Z}}
+
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{2}
+\sloppy
+
+\newcommand{\AsymCloud}[3]{
+\begin{scope}[shift={#1},scale=#3]
+\draw (-1.6,-0.7) .. controls (-2.3,-1.1)
+and (-2.7,0.3) .. (-1.7,0.3)coordinate(asy1) .. controls (-1.6,0.7)
+and (-1.2,0.9) .. (-0.8,0.7) .. controls (-0.5,1.5)
+and (0.6,1.3) .. (0.7,0.5) .. controls (1.5,0.4)
+and (1.2,-1) .. (0.4,-0.6)coordinate(asy2) .. controls (0.2,-1)
+and (-0.2,-1) .. (-0.5,-0.7) .. controls (-0.9,-1)
+and (-1.3,-1) .. cycle;
+\node at ($(asy1)!0.5!(asy2)$) {#2};
+\end{scope}
+}
+
+
+
+\AtBeginDocument{\renewcommand\contentsname{Table of Contents}}
+
+\newcommand{\listofscribes}{List of Scribes}
+\newcommand{\listofinstr}{List of Instructors}
+\newlistof{scribe}{scr}{\listofscribes}
+\newlistof{instructors}{instr}{\listofinstr}
+
+\newcommand{\Lecture}[7]{
+\newpage
+\setcounter{chapter}{#3}
+\setcounter{lecture}{#3}
+
+% To reset numbering in a new lecture
+\setcounter{theorem}{0}  
+% To reset numbering within a section
+\setcounter{section}{0}  
+
+% For table of contents
+\cleardoublepage	% for two sided document with odd no. of TOC pages
+\phantomsection	% for fixing hyperref link
+\addcontentsline{toc}{chapter}{Lecture \protect\numberline{#3}(#6) {#4}}
+
+% For list of scribes
+\cleardoublepage	% for two sided document with odd no. of TOC pages
+\phantomsection		% for fixing hyperref link
+
+% Adding the correctly colored line to scribe list.
+
+\ifthenelse{\equal{#6}{$\alpha$}}{\addcontentsline{scr}{scribe}{\protect {\sf Lecture } \numberline{\sf \thelecture} {\color{alpha}{#5} - (#6) \tiny{TA : #7}}}}
+{
+\ifthenelse{\equal{#6}{$\beta$}}{\addcontentsline{scr}{scribe}{\protect {\sf Lecture } \numberline{\sf \thelecture} {\color{beta}{#5} - (#6) \tiny{TA : #7}}}}
+{
+\ifthenelse{\equal{#6}{$\gamma$}}{\addcontentsline{scr}{scribe}{\protect {\sf Lecture } \numberline{\sf \thelecture} {\color{gamma}{#5} - (#6) \tiny{TA : #7}}}}
+{
+\ifthenelse{\equal{#6}{$\delta$}}{\addcontentsline{scr}{scribe}{\protect {\sf Lecture } \numberline{\sf \thelecture} {\color{delta}{#5} - (#6) \tiny{TA : #7}}}}
+{
+\addcontentsline{scr}{scribe}{\protect {\sf Lecture } \numberline{\sf \thelecture} {{#5} - (Incorrect Labelling) \tiny{TA: #7}}}
+}}}}
+
+%\addcontentsline{scr}{scribe}{\protect {\sf Lecture } \numberline{\sf \thelecture} {\em #5} (#6)}
+
+% For list of instructors
+\cleardoublepage	% for two sided document with odd no. of TOC pages
+\phantomsection		% for fixing hyperref link
+\addcontentsline{instr}{instructors}{\protect {\sf Lecture } \numberline{\sf \thelecture} {\em #1}}
+\noindent
+\parbox{9cm}{
+%   Indian Institute of Technology Madras\\
+%	CS5130 - Mathematical Tools for Theoretical Computer Science\\
+%	\rule{0mm}{6mm}%
+	{\it \bf Instructor :} #1 \\
+	{\it \bf Scribe :} #5 ({\it TA:} #7) \\
+	{\it \bf Date :}     #2 \\
+	{\it \bf Status :} #6
+}
+\hfill
+\begin{tabular}{c@{}}
+{\bf\Large Lecture}\\
+\rule{0mm}{17mm}\scalebox{6.6}{\bf\thelecture}
+\end{tabular}
+
+\vspace{1.5cm}
+\begin{center}
+{\Large \bf #4}
+\end{center}
+\vspace{1cm}
+%\thispagestyle{empty}
+}
+
+%
+%\newpage
+%\listofscribe          % For automatic scribe list generation.
+%
+%\newpage
+%\listofinstr
+%\newpage
+%\tableofcontents
+%
+%\newpage 
+%\pagenumbering{arabic}  % Arabic page numbering for lectures.
+%%\part{Introduction, Motivation and the Language}
+%\newpage \setcounter{page}{1} 
