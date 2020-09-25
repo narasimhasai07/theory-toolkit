@@ -1,0 +1,238 @@
+\Lecture{Jayalal Sharma}{Sept 19, 2020}{07}{From Bijections to PIE}{Anshu Yadav}{$\alpha$}{JS}
+
+\section{Introduction}
+In this lecture, we will continue with the use of bijections and use it in formally proving the two identities that we discussed in class and then see their relationship to the Principal of Inclusion and Exclusion. 
+
+\section{The Identities}
+Recall that we proved following two identities in one of the discussion sessions
+\begin{align}
+     \sum_{k=0}^n (-1)^k{n\choose k} &= 0 \label{REV1}\\ 
+     \sum_{k=0}^m (-1)^k{n\choose k} &= (-1)^m{n-1\choose m} \label{REV2}
+\end{align}
+In this section, we will see the proofs for the above equations is detail
+\subsection{Proof for Eqn. \eqref{REV1}} \label{subsec:identity-even-odd-1}
+$$\sum_{k=0}^n (-1)^k{n\choose k} = 0$$
+\begin{proof}
+    The LHS counts the number of even sized subsets of $[n]$ with positive sign and odd size subsets with negative sign. Then we proved the result using bijection between even sized and odd sized subsets of $[n]$. Hence, we get 0 on RHS. Let us formally define the bijection here.
+    
+    Let $E$ be the set of all even sized subsets of $[n]$ and $O$ be the set of all odd sized subsets of $[n]$. Then the bijection  $\phi_i:E\rightarrow O$ is defined with respect to an element $i\in[n]$ as follows.
+    
+    Let $X\subseteq [n]$, such that $|X|$ is even. Then 
+    \[
+        \phi_i(X) = 
+        \begin{cases}
+            X\setminus \{i\} & ~~~~~\text{ if } i\in X\\
+            X\cup\{i\} & ~~~~~\text{ if } i\not\in X
+        \end{cases}
+    \]
+    \underline{Proof of bijection:}
+    \begin{description}
+        \item \textit{Well-defined:} Given any even sized subset $X$, there are two possibilities: (i) $i\in X$, (ii) $i\not\in X$. In first case, $i$ is removed from $X$, hence its size reduces by one and becomes odd. In the second case, $i$ is added, hence the size of the subset increases by one and becomes odd. Hence, $\phi$ is well defined.
+        \item \textit{Injective:} Let $X$ and $X'$ be two distinct subsets of $[n]$. Then $\exists j\in[n]$ such that $j$ is present in exactly one of the two subsets. Wlog, let $j\in X$ and $j\not\in X'$. Now, if $j\neq i$, then $j\in \phi(X)$ and $j\not\in \phi(X')$ and hence $\phi(X)\neq \phi(X')$. On the other hand, if $j=i$, then $j\not\in \phi(X)$ and $j\in \phi(X')$. Hence, $\phi(X)\neq \phi(X')$.  
+        \item \textit{Surjective:} Let $Y\in O$ be an odd sized subset of $[n]$. From $Y$, we can recover $X$ such that $\phi(X) = Y$ by the same operation as in $\phi$. That is, 
+        \[
+        X= \begin{cases}
+            Y\setminus \{i\} & ~~~~~\text{ if } i\in Y\\
+            Y\cup\{i\} & ~~~~~\text{ if } i\not\in Y
+        \end{cases}
+        \]
+        It can easily be verified that in both the cases, $X$ is an even sized subset of $[n]$.
+    \end{description}
+    This completes the proof.
+\end{proof}
+%
+%
+\subsection{Proof for Eqn. \eqref{REV2}} \label{subsec:identity-even-odd-2}
+$$\sum_{k=0}^m (-1)^k{n\choose k} = {n-1\choose m}$$
+\begin{proof}
+Now we look at the second identity which is even more interesting. To prove this identity we use \emph{almost bijection} where the bijection is between a set and subset of another set.
+
+In words, the identity to prove, can be described as
+$$\Large\substack{\# \textrm{ of even sized subsets of  $[n]$}\\  \textrm{of size atmost $m$}} - \substack{\# \textrm{ of odd sized subsets of $[n]$} \\ \textrm{of size atmost $m$}} = (-1)^m{n-1\choose m}.$$ Clearly, there cannot be a bijection between the two sets (even sized subsets and odd sized subsets) in this case, since their difference is non-zero. This is where we use almost bijection.
+
+We use following case analysis. 
+\begin{description}
+\item \underline{\textbf{Case1:} $m$ is even:} Then the identity to prove is:
+\begin{equation} \label{eq:even-odd}
+    \sum_{k=0}^m (-1)^k{n\choose k} = {n-1\choose m}
+\end{equation}
+This can be interpreted as 
+\begin{equation} \label{eq:even-odd-1}
+    \sum_{\substack{k=0,\\k\text{ is even}}}^m {n\choose k} -  \sum_{\substack{k=1,\\k\text{ is odd}}}^{m-1} {n\choose k} = {n-1\choose m}
+\end{equation}
+Let $E$ be the set of all the even sized subsets of $[n]$ of size at most $m$ and $O$ be the set of odd sized subsets of $[n]$ having size at most $m-1$. Then, Eqn.~\eqref{eq:even-odd-1} can intuitively interpreted as follows: there is a subset $E'\subseteq E$, such that $E'$ is in bijection with $O$ and $|E\setminus E'| = {n-1\choose m}$. Thus, we have three tasks at hand
+\begin{itemize}
+    \item identify the set $E'$, and
+    \item define and prove the bijection between $E'$ and $O$.
+    \item prove that $|E\setminus E'| = {n-1\choose m}$
+\end{itemize}
+\underline{Defining the set $E'$:} Set $E'$ is the union of two sets: 
+$$E' = \{X\subseteq [n]: |X| \textrm{ is even and } |X|\le m-2\}\cup\{X\subseteq [n]: i\in X \textrm{ and } |X| = m\}$$
+\underline{Defining the bijection:} The bijection $\phi:E'\rightarrow B$ is defined in the same way as we defined it for first identity. That is, for $X\in E'$,
+\[
+\phi(X) = 
+\begin{cases}
+X\setminus \{i\} & ~~~~~\text{ if } i\in X\\
+X\cup\{i\} & ~~~~~\text{ if } i\not\in X
+\end{cases}
+\]
+\underline{Proof of bijection}
+\begin{description}
+\item \textit{Well-defined:} Let $X\in E'$, then (i) if $|X|\le m-2$, then $|\phi(X)|$ is odd and $|\phi(X)|\le m-1$, (ii) if $|X| = m$, then $i\in X$, hence $\phi(X) = X\setminus \{i\}$. This implies $|\phi(X)| = m-1$. Thus, in both the cases $\phi(X)\in O$.
+\item \textit{Injective:} Since, the function is same as in the previous case, the same argument for injectivity works.
+\item \textit{Surjective:} Let $Y\in O$ be an odd sized subset of $[n]$. From $Y$, we can recover $X\in E'$ such that $\phi(X) = Y$ by the same operation as in $\phi$. That is, 
+ \[
+ X= 
+ \begin{cases}
+Y\setminus \{i\} & ~~~~~\text{ if } i\in Y\\
+Y\cup\{i\} & ~~~~~\text{ if } i\not\in Y
+ \end{cases}
+ \]
+ It can easily be verified that in both the cases, $|X|$ is even. 
+ In first case, since $|Y|\le m-1, |X|\le m-2$, hence $X\in E'$. In second case, since $i\not\in Y$ and $|Y|\le m-1$, $|X|\le m$ and $i\in X$. Hence $X\in E'$, by definition.
+\end{description}
+This proves the bijection between $E'$ and $O$. 
+
+\underline{Proof for: $|E\setminus E'| = {n-1\choose m}$}
+
+From the above definitions, $E\setminus E' = \{X\subseteq [n]: |X| = m, i\not\in X\}$. This can be interpreted as $E\setminus E' = \{X\subseteq [n]\setminus \{i\}: |X| = m\}$. Hence, $|E\setminus E'| = {n-1\choose m}$.
+
+\item \underline{\textbf{Case2:} $m$ is odd:} In this case the identity to prove is:
+\begin{equation}
+\label{eq:even-odd-3}
+    \sum_{k=0}^m (-1)^k{n\choose k} = - {n-1\choose m}
+\end{equation}
+This can be interpreted as 
+\begin{equation}
+\label{eq:even-odd-2}
+    \sum_{\substack{k=0,\\k\text{ is even}}}^{m-1} {n\choose k} -  \sum_{\substack{k=1,\\k\text{ is odd}}}^{m} {n\choose k} = -{n-1\choose m}
+\end{equation}
+Equivalently,
+\begin{equation}
+\label{eq:odd-even-1}
+    \sum_{\substack{k=1,\\k\text{ is odd}}}^{m} {n\choose k} - \sum_{\substack{k=0,\\k\text{ is even}}}^{m-1} {n\choose k}  = {n-1\choose m}
+\end{equation}
+This time the set of odd sized subsets of $[n]$ of size at most $m$ is bigger than the even sized subsets of $[n]$ of size at most $m$.
+The proof is same as that for the case of even $m$. 
+Let $E$ be the set of all the even sized subsets of $[n]$ of size at most $m-1$ (since $m$ is odd) and $O$ be the set of odd sized subsets of $[n]$ having size at most $m$. Then~\eqref{eq:odd-even-1} can be interpreted as follows: there is a subset $O'\subseteq O$, such that $E$ is in bijection with $O'$ and $|O\setminus O'| = {n-1\choose m}$.
+  
+Thus, we have two task at hand
+\begin{itemize}
+    \item identify the set $O'$, and
+    \item define and prove the bijection between $E$ and $O'$.
+    \item prove that $|O\setminus O'| = {n-1\choose m}$
+\end{itemize}
+\underline{Defining the set $O'$:} Set $O'$ to be the union of two sets: 
+$$O' = \{Y\subseteq [n]: |Y| \text{ is odd and } |Y|\le m-2\}\cup\{Y\subseteq [n]: i\in Y \text{ and } |Y| = m\}$$
+\underline{Defining the bijection:} The bijection $\phi:E\rightarrow O'$ is defined in the same way as we defined it for first identity. That is, for $X\in E$,
+\[
+\phi(X) = 
+\begin{cases}
+X\setminus \{i\} & ~~~~~\text{ if } i\in X\\
+X\cup\{i\} & ~~~~~\text{ if } i\not\in X
+\end{cases}
+\]
+\underline{Proof of bijection}
+\begin{description}
+\item \textit{Well-defined:} Let $X\in E$, then $\phi(X)$ is of odd size because either an element is added or removed from $X$, which is of even size. Now, (i) if $i\in X$, then $\phi(X) = X\setminus\{i\}$. Hence, $|\phi(X)|\le m-2$ (because $|X|\le m-1$) which implies $\phi(X)\in O'$ (ii) if $i\not\in X$, then, $\phi(X) = X\cup \{i\}$. This implies $|\phi(X)| \le m$. But since, $i\in \phi(X)$, $\phi(X)\in O'$. This proves that $\phi$ is well- defined.
+\item \textit{Injective:} Since, the function is same as in sub section~\ref{subsec:identity-even-odd-1}, the same argument for injectivity works.
+\item \textit{Surjective:} Let $Y\in O'$ be an odd sized subset of $[n]$. From $Y$, we can recover $X\in E$ such that $\phi(X) = Y$ by the same operation as in $\phi$. That is, 
+ \[
+ X= 
+ \begin{cases}
+Y\setminus \{i\} & ~~~~~\text{ if } i\in Y\\
+Y\cup\{i\} & ~~~~~\text{ if } i\not\in Y
+ \end{cases}
+ \]
+ It can easily be verified that in both the cases, $|X|$ is even. 
+ In first case, $|Y|\le m$ and hence $|X|\le m-1$. So, $X\in E$. In second case, since $i\not\in Y$, $|Y|\le m-2$ (by definition) and hence $|X|\le m-1$. Hence $X\in E$.
+\end{description}
+This proves the bijection between $E$ and $O'$. 
+
+\underline{Proof for: $|O\setminus O'| = {n-1\choose m}$}\\
+From the above definitions, $O\setminus O' = \{Y\subseteq [n]: |Y| = m, i\not\in Y\}$. This can be interpreted as $O\setminus O' = \{Y\subseteq [n]\setminus \{i\}: |Y| = m\}$. Hence, $|O\setminus O'| = {n-1\choose m}$.
+\end{description}
+This completes the proof
+\end{proof}
+This proves both the identities.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Principle of Inclusion and Exclusion}
+Suppose we are given $n$ sets $A_1, A_2, \ldots, A_n\subseteq G$, where $G$ is some ground set. We are interested in finding the size of $A= A_1\cup A_2\cup\ldots\cup A_n$. This is very abstract scenario and we will see specific examples later, but here we are going to see classic use of the above identities in deriving this number.
+
+So, we are interested in finding $|A| = |A_1\cup A_2\cup\ldots\cup A_n|$. 
+
+So, here is a thought process - 
+Clearly, we can add the size of individual sets as 
+$|A| = |A_1|+|A_2|+\ldots +|A_n|$, but this will over-count if there are some elements present in more than one sets. So, for that we need to subtract the double counting. For e.g. if $x\in A_1$ and $x\in A_2$, then it gets counted twice and to compensate for that we need to subtract $|A|=|A_1\cap A_2|$ and we might attempt $|A| = |A_1|+|A_2|+\ldots +|A_n| - \sum_{1\le i < j\le n}|A_i\cap A_j|$. But then, if $x$ is present in $A_1, A_2$ and $A_3$, the it is under-counted (added thrice and subtracted thrice). So, again we need to compensate for that by adding $\sum_{1\le i \le j\le k\le n}|A_i\cap A_j\cap A_k|$ in the above expression and this sequence goes on for any element being present in $k\le n$ sets and finally we get the expression for $|A|$  as follows
+\begin{equation} \label{eq:pie-1}
+    |A| = |A_1|+\cdots+|A_n|-\sum_{1\le i< j\le n}|A_i\cap A_j| +\sum_{1\le i<j<k}|A_i\cap A_j\cap A_k| -\cdots + (-1)^{n+1}|A_1\cap A_2\cap\cdots\cap A_n|
+\end{equation}
+For $n=2$, the above expression gives
+$$|A| = |A_1|+|A_2|-|A_1\cap A_2|$$
+which we all must have seen before and can easily prove using Venn diagram. 
+
+In this section, we will formally prove the above expression for general $n$ using the two identities we proved in previous section.
+\begin{proof}
+Consider any $x\in A_1\cup A_2\cup\cdots\cup A_n$. Let $x$ appears in $k$ of the $A_i$'s. Then let us see how $x$ gets counted
+\begin{itemize}
+    \item[-] $|A_1|+|A_2|+\cdots +|A_n|$: counts $x$ $k$ times (added)
+    \item[-] $\sum_{1\le i<j\le n}|A_i\cap A_j|$: counts $x$ ${k\choose 2}$ times (subtracted)
+    \item[-] $\sum_{1\le i<j<k\le n}|A_i\cap A_j\cap A_k|$: counts $x$ ${k\choose 3}$ times (added) 
+    \item[-] and so on $\ldots$
+\end{itemize}
+Notice that in terms involving intersection of more than $k$ sets, $x$ never appears.
+
+Thus, 
+\begin{eqnarray*} 
+{\Large\substack{\# \text{of times $x$}\\ \text{gets counted}}} &=& k+{k\choose 2}-{k\choose 3}+\cdots +(-1)^{k+1}{k\choose k}\\
+&=&-{k\choose 0}+{k\choose 1}+{k\choose 2}-{k\choose 3}+\cdots +(-1)^{k+1}{k\choose k}+{k\choose 0}\\
+&=&-\sum_{i=0}^k(-1)^{i}{k\choose i}+{k\choose 0}\\
+%&&\text{from~\eqref{eq:identity-1}, $\sum_{i=0}^k(-1)^k{k\choose i} = 0$}\\
+&=&{k\choose 0} ~~~~~~~~~~~~~~~~~~~~~~~\text{from ~\eqref{REV1}}\\
+&=& 1
+\end{eqnarray*}
+Thus, irrespective of the value of $k$, any element $x\in A_1\cup A_2\cup\cdots\cup A_n$ is counted exactly once. Hence, every $x\in A_1\cup A_2\cup\cdots\cup A_n$ is counted exactly once in RHS in~\eqref{eq:pie-1}.
+
+This proves the PIE
+\end{proof}
+Now let us look at the application of second identity that we derived. This identity is used in deriving a version of PIE which appears very naturally in several context. Let us look at one such example.
+
+PIE says that if we want to derive $|A_1\cup\A_2\cup\cdots\cup A_n|$, then the following expression does not give the correct count.
+$$|A_1\cup\A_2\cup\cdots\cup A_n| = |A_1|+|\A_2|+\cdots+|A_n|$$ 
+But we can ask, does this expression gives a lower or an upper bound? As we saw, this does over-counting, hence we can write
+$$|A_1\cup\A_2\cup\cdots\cup A_n| \le |A_1|+|\A_2|+\cdots+|A_n|$$
+Now, suppose we include the next component, i.e. $$|A_1|+|\A_2|+\cdots+|A_n|-\sum_{1\le i<j\le n}|A_i\cap A_j|$$
+Again from PIE we know that this also does not give the correct count. But we ask the same question again - does it give any lower or upper bound. And as we saw that this term can do some over-subtraction and hence we can say that this expression gives the lower bound. That is, 
+$$|A_1\cup\A_2\cup\cdots\cup A_n| \ge |A_1|+|\A_2|+\cdots+|A_n|-\sum_{1\le i<j\le n}|A_i\cap A_j|$$
+Similarly, 
+$$|A_1\cup\A_2\cup\cdots\cup A_n| \le |A_1|+|\A_2|+\cdots+|A_n|-\sum_{1\le i<j\le n}|A_i\cap A_j|+\sum_{1\le i<j<k\le n}|A_i\cap A_j\cap A_k|$$
+and we continue like this. 
+
+Let us now formally establish this observation. We use the same technique that we used in the proof of PIE. 
+
+Let $x$ appears in $k$ of the sets in $A_1, A_2, \ldots, A_n$. Suppose we cut off the PIE after $m\le n$ sized intersections. Then 
+\begin{eqnarray*} 
+{\Large\substack{\# \text{of times $x$}\\ \text{gets counted}}} &=& {k\choose 1}-{k\choose 2}+\cdots+(-1)^{m+1}{k\choose m}\\
+%&=&-{k\choose 0}+{k\choose 1}+{k\choose 2}-{k\choose 3}+\cdots +(-1)^{k+1}{k\choose k}+{k\choose 0}\\
+&=&-\sum_{i=0}^m(-1)^{i}{k\choose i}+{k\choose 0}\\
+%&&\text{from~\eqref{eq:identity-1}, $\sum_{i=0}^k(-1)^k{k\choose i} = 0$}\\
+&=& 1+(-1)^{m+1}{k-1\choose m} ~~~~~~~~~~~~~~~~~~~~~~~\text{from ~\eqref{REV2}}
+\end{eqnarray*}
+Thus, $x$ is over counted or under counted depending on whether the second term on RHS is positive or negative. Let us analyze this for two cases.
+\begin{description}
+\item Case1: $k\le m$
+
+Since, $x$ appears in only $k\le m$ sets and we are cutting down only after $m$, then this means that all possible intersections of this particular $x$ are added and subtracted and $x$ can not appear in any of the intersections of more than $k$ sets. Hence, $x$ is neither under counted nor over counted. In the expression, ${k-1\choose m} = 0$ Hence,
+$$\# \text{of times $x$ is counted } = 1$$
+\item Case2: $k>m$
+
+In this case, $x$ can be under counted or over counted depending upon whether $m$ is even or odd.
+If $m$ is odd then $x$ is over counted.
+
+If $m$ is even then $x$ is under counted.
+\end{description}
+Notice that either all $x\in A_1\cup\A_2\cup\cdots\cup A_n$ are correctly counted or under counted or all $x$ are correctly counted or over counted based on the parity of $m$. Thus, whether a PIE cut down after $m$ intersections gives lower bound or upper bound depends only on the parity of $m$. This principle is also called the \emph{Bon Ferroni's inequality}. 
+\begin{remark} 
+    We used the equality in~\eqref{eq:even-odd} to prove PIE. We can actually do the other way round as well, i.e. we can use PIE to prove this equality too.
+\end{remark}
+This completes this lecture. In the next lecture we will look at some applications of PIE.
