@@ -1,0 +1,112 @@
+\Lecture{Jayalal Sharma}{Sept 19, 2020}{05}{Multichoosing}{Narasimha Sai Vempati}{$\alpha$}{JS}
+
+\section{Introduction}
+Consider the definition of \emph{set}. We know that it's a well defined collection of \emph{distinct} objects. From a collection of $n$ distinct symbols, the number of ways to form a \emph{set} of length $k$ is given by $\binom{n}{k}$. Now let's consider the definition of \emph{multi-set}. It's similar to that of a \emph{set}, except that it allows repetition of objects. Now it's natural ask the following question: From a collection of $n$ distinct symbols, what is the number of ways to form a \emph{multi-set} of length $k$. Multichoosing exactly answers this questions. In this lecture, we explore multichoosing in detail. We discuss several equivalent bijections to this problem and come-up with an algebraic expression for \mulnom{n}{k} (spelled out as $n$ \emph{multi-choose} $k$).
+
+\section{Equivalent bijections} \label{sec:equi-bij}
+\subsection{Non-negative solutions}\label{non-neq-sol-prob}
+Formally, \mulnom{n}{k} is the number of ways of choosing $k$ objects from a set of $n$ objects where the order is not important but repetitions are allowed. For all $i=1,2,\cdots,n$, if we denote by $x_i$ the number of copies of $i^{th}$ object we choose, then we have the equation \begin{equation}\label{eqn1}
+    x_1+x_2+\cdots+x_n=k
+\end{equation} where each $x_i \geq 0$. Therefore, number of \emph{non-negative} integral solutions to this equation gives us the required number of ways of choosing $k$ objects from $n$ objects with given conditions. Let's look at an equivalent problem and establish a bijection between these two.
+
+\subsection{Voting problem}\label{voting-prob} If $n$ candidates are contesting in an election and there are $k$ voters, how many ways can votes of those $k$ voters be distributed among $n$ candidates? 
+
+If we denote by $x_i$, the number of votes received by $i^{th}$ candidate and there are $k$ voters, we have $x_1+x_2+\cdots+x_n=k$ and thus, the number of ways of dividing votes among candidates is the number of non-negative solutions to the equation \ref{eqn1}. Formally, we can define a bijection $f$ from set of solutions to the equation \ref{eqn1} to set of ways of dividing the votes among $n$ candidates. 
+\begin{description}
+\item\underline{Definition:}  $f$ takes the tuple $\vecx=(x_1,x_2,\cdots,x_n)$ and assign $x_i$ number of votes to $i^{th}$ candidate where $i=1,2,\cdots,n$.
+\item\underline{Well defined:} $f$ is well defined because for every valid tuple $\vecx=(x_1,x_2,\cdots,x_n)$, we have $x_1+\cdots+x_n=k$ and thus summing over votes received by $i^{th}$ where $i=1,2,\cdots,n$ will be $k$ votes in total. 
+%there is a unique way of dividing the votes among candidates. In other words, for any two distinct way of dividing $k$ votes among $n$ candidates, there must exists an $i$ such that number of votes received $i^{th}$ candidate is different and thus $x_{1_i} \neq x_{2_i}$. Therefore $\vecx_1\neq\vecx_2$. 
+\item\underline{Injective:} $f$ is an injection because for every valid way of dividing the votes among candidates, there's a unique solution tuple in which $x_i = $ number of votes received by $i^{th}$ candidate. In other words, for any two $\vecx_1\neq\vecx_2$, there exists an $i\in[n]$ such that $x_{1_i}\neq x_{2_i}$ and $i^{th}$ candidate gets different votes. Thus $f(\vecx_1)\neq f(\vecx_2)$.
+\item\underline{Surjective:} $f$ is surjective because for every way of dividing $k$ votes among $n$ candidates, there is a pre-image $\vecx=(x_1,\cdots,x_n)$ which is a valid solution to the equation \ref{eqn1} (as there are a total of $k$ voters, sum of number of votes received by each voter must sum up to $k$). 
+\end{description}
+Thus $f$ is a bijection from the set of non-negative solutions to $x_1+\cdots+x_n=k$ to the set of ways of dividing $k$ votes among $n$ candidates.
+\subsection{Non-decreasing subsequences}\label{non-dec-subseq-prob} Number of non-decreasing sequences of integers between $1$ and $n$ of length $k$. A non-decreasing sequence is of the form $\{a_1,a_2,\cdots,a_k\}$ where $1\leq a_1\leq a_2\cdots\leq a_k\leq n$. Lets define a bijection $f$ from set of non-negative integral solutions to Eqn. \ref{eqn1} to set of non-decreasing sequences between $1$ and $n$ of length $k$. 
+\begin{description}
+\item\underline{Definition:} $f$ takes $\vecx=(x_1,\cdots,x_n)$ as input and writes the number $i$ $x_i$ times for all $i=1,2,\cdots,n$ to obtain a sequence of length $k$.
+\item\underline{Well defined:} As $f$ constructs the sequence in increasing order from $1$ to $n$ by writing $i$ $x_i$ times, the resulting sequence will be non-decreasing. Therefore, $f$ is well defined.
+\item\underline{Injective:} For every $\vecx_1\neq\vecx_2$, there exists an $i$ such that $x_{1_i} \neq x_{2_i}$ and thus in the resulting sequences, number $i$ is written different number of times. Therefore, $f$ is injective.
+\item\underline{Surjective:} Every non-decreasing sequence of integers between $1$ and $n$ of length $k$ has a pre-image $\vecx=(x_1,\cdots,x_n)$  which is a valid solution to equation \ref{eqn1} (where $x_i$ is the number of times the number $i$ is present in the sequence and as length of sequence is $k$, all $x_i$'s where $i=1,2,\cdots,n$ sum up to $k$).
+\end{description}
+Thus $f$ is a bijection.
+\subsection{Stars and bars problem}\label{star-bar-prob} There are $k$ stars placed horizontally. Find the number of ways to place $n-1$ bars in between those $k$ stars. Lets define a bijection $f$ from set of non-negative integral solutions to Eqn. \ref{eqn1} to set of ways of placing $n-1$ bars among $k$ stars.
+\begin{description}
+\item\underline{Definition:} $f$ takes $\vecx=(x_1,\cdots,x_n)$ as input and place $x_i$ number of stars between $(i-1)^{th}$ bar and $i^{th}$ bar. We leave it as an exercise to prove that $f$ is well-defined, injective and surjective.
+\end{description}
+\jsay{Prove that $f$ is a bijection}
+
+\section{Algebraic expression}\label{alg-expr}
+So far in Sec. \ref{sec:equi-bij}, we have established bijections between \emph{non-negatives integral} solutions of Eq. \ref{eqn1} and various other problems and argued that number of ways of solving any particular problem is equal to the number of non-negative integral solutions to Eq. \ref{eqn1}. In this section, we are interested in coming up with a concrete expression for \mulnom{n}{k} by solving it's equivalent bijection.
+
+\paragraph{Method 1} Let's solve the \emph{stars and bars} problem defined in Sec. \ref{star-bar-prob}. Let's use the fact that any placement of $n-1$ bars among $k$ stars can be equivalently thought of as a string of length $n+k-1$ over the alphabet $\{\star,|\}$ with $k$ $\star$'s. Therefore, \begin{align*}
+    \textrm{number of ways of placing } n-1 \textrm{ bars among } k \textrm{ stars } &= \textrm{number of such strings}\\
+    &= \binom{n+k-1}{k}
+\end{align*}
+
+\paragraph{Method 2} Let's solve the \emph{Non-decreasing subsequences} problem defined in Sec. \ref{non-neq-sol-prob}. Let's establish a bijection $f$ from set $\beta$ of non-decreasing subsequences of integers between $1$ and $n$ of length $k$ to a set $\Gamma$ of strictly increasing subsequences of integers between $1$ and $n+k-1$ of length $k$. A strictly increasing subsequence is of the form $1\leq b_1<b_2<\cdots<b_k\leq n+k-1$
+\begin{description}
+\item{\underline{Definition:}} $f$ takes as input a non-decreasing subsequence $(a_1,a_2,\cdots,a_k)$ between $1$ and $n$ and for all $i=1,2,\cdots,k$ set $b_i = a_i+i-1$ and output the sequence $(b_1,b_2,\cdots,b_k)$
+\item{\underline{Well defined:}} For any $(a_1,a_2,\cdots,a_k)\in\beta$, we have for all $i=1,2,\cdots,k-1$, \begin{align*}
+    a_i &\leq a_{i+1}\\
+    a_i+i &\leq a_{i+1}+i\\
+    a_i+i-1 &< a_{i+1}+i\\
+    b_i &< b_{i+1}
+\end{align*}  Therefore, the subsequence $(b_1,\cdots,b_k)$ is strictly increasing subsequence and thus $f$ is well defined.
+\item{\underline{Injective:}} For every non-decreasing subsequence $(a_1,\cdots,a_k)$, there's a unique strictly increasing subsequence $(b_1,\cdots,b_k)$ where for all $i=1,\cdots,k$, $b_i = a_i+i-1$. Therefore $f$ is injective.
+\item{\underline{Surjective:}} For every strictly increasing subsequence $(b_1,\cdots,b_k)$, there's a pre-image $(a_1,\cdots,a_k)$ which is non-decreasing where for all $i=1,\cdots,k$, $a_i=b_i-i+1$
+\end{description}
+
+
+Therefore, $f$ is a bijection. The number of ways of choosing a strictly increasing subsequence $(b_1,\cdots,b_k)$ between integers $1$ and $n+k-1$ is just choosing $k$ integers from first $n+k-1$ integers and arrange them in one way(increasing order). Therefore number of ways = $\binom{n+k-1}{k}$. As $f$ is a bijection, therefore, the number of non-decreasing subsequences between $1$ and $n$ of length $k$ are $\binom{n+k-1}{k}$
+
+\paragraph{Method 3} Let's solve the \emph{Voting} problem defined in Sec. \ref{voting-prob}. Let's ask a slightly modified question. 
+\begin{description}
+\item \underline{Question:} How many ways to distribute $m$ votes among $n$ candidates such that each candidate gets at least one vote.
+\item \underline{Answer 1:} As every candidate gets at least one vote, let's first distribute one vote each to each of the $n$ candidate and the distribute the remaining $m-n$ votes among $n$ candidates. By the bijection defined in Sec. \ref{voting-prob}, the number of ways of distributing $m-n$ votes among $n$ candidates is \mulnom{n}{m-n}  
+\item \underline{Answer 2:} Let's interpret votes as $\star$ s. Then the question essentially reduces to placing $n-1$ bars (since there are $n$ candidates, we divide by placing $n-1$ bars) among $m$ stars (since there are $m$ voters). $i^{th}$ candidate gets votes equal to number of stars between $(i-1)^{th}~|$ and $i^{th}~|$. However, there are two additional constraints \begin{enumerate}
+    \item\label{cond1} A bar cannot be placed in the beginning or in the end (if not then either the first candidate or the last candidate gets $0$ votes)
+    \item\label{cond2} We cannot place two $|$ s between same two $\star$ s (if we place $(i-1)^{th}~|$ and $i^{th}~|$ between same two $\star$ s, the $i^{th}$ candidate gets $0$ votes)
+\end{enumerate}
+Hence, we have to choose $n-1$ gaps among the $m-1$ gaps (because we have $m+1$ gaps and by cond. \ref{cond1} we remove two) to place $n-1~|$ s without repetitions (because repeating violates cond. \ref{cond2}). Therefore, there are $\binom{m-1}{n-1}$ ways of doing it. Thus \mulnom{n}{m-n}=$\binom{m-1}{n-1}$ and by substituting $m=n+k$, we have $$\textrm{\mulnom{n}{k}}=\binom{n+k-1}{n-1}=\binom{n+k-1}{k}$$
+\end{description}
+\section{Identities}
+In this section, we discuss some identities on \mulnom{n}{k} and argue their proofs using the idea of either double counting or bijections.
+\paragraph{Identity 1} $$\textrm{\mulnom{n}{k}}=\textrm{\mulnom{k+1}{n-1}}$$
+\begin{proof}
+Let's use the bijection method to prove this. Formally, lets define sets $S_1$ and $S_2$ and count their cardinalities independently and then establish a bijection from $S_1$ to $S_2$ proving that $|S_1|=|S_2|$.
+\begin{description}
+\item \underline{$S_1$:} Configuration of $k~\star$ s and $n-1~|$ s as described in Sec. \ref{star-bar-prob}. By the bijection defined in it, $|S_1|=$ \mulnom{n}{k}
+\item \underline{$S_2$:} Configuration of $n-1~\star$ s and $k~|$ s as described in Sec. \ref{star-bar-prob}. Again, by the bijection defined in it, $|S_2|=$\mulnom{k+1}{n-1}
+\item \underline{Bijection:} Let's define a bijection $f$ from $S_1$ to $S_2$. $f$ takes a configuration from $S_1$ as input and interpret $\star$ s as $|$ s and $|$ s as $\star$ s. Therefore it ends up with a configuration with $n-1~\star$ s and $k~|$ s which is a configuration is $S_2$. It's easy to observe that $f$ is a bijection.
+\end{description}
+As $f$ is a bijection from $S_1$ to $S_2$, we have $|S_1|=|S_2|$. This completes the proof 
+\end{proof}
+
+\paragraph{Identity 2}
+$$k~\textrm{\mulnom{n}{k}}=n~\textrm{\mulnom{n+1}{k-1}}$$
+\begin{proof}
+Let's use the method of double counting to prove this.
+\begin{description}
+\item \underline{Question:} In how many ways can we construct a non-decreasing sequence $1\leq a_1\leq a_2\cdots\leq a_k\leq n$ and mark one element?
+\item \underline{Asnwer 1:} By the bijection established in Sec. \ref{non-dec-subseq-prob} we have \mulnom{n}{k} number of non-decreasing subsequences and for every such subsequence, we can mark any one of the $k$ elements choose. Thus the answer is $k$ \mulnom{n}{k} 
+\item \underline{Answer 2:} Firstly, determine the value in $[n]$ which is to be marked. Let $r$ be this value. Now, consider a non-decreasing subsequence between $1$ and $n+1$ with $k-1$ elements. Using $r$ and the non-decreasing sequence chosen, we construct a unique non-decreasing sequence between $1$ and $n$ of length $k$ with $r$ as marked in the following way:
+
+Let $(b_1,b_2,\cdots,b_{k-1})$ with $1\leq b_1\leq b_2\leq\cdots\leq b_{k-1}\leq n+1$ be the chosen sequence, 
+\begin{itemize}
+    \item Insert marked-$r$ in the right most position so that the resulting sequence is still sorted.
+    \item As long as there's an $n+1$ in the sequence, remove it and add it as $r$ to the right of marked-$r$ in the sequence
+\end{itemize}
+Therefore, number of required sequences 
+\begin{align*}
+    &= \textrm{ number of ways to choose }r \times \substack{\textrm{ number of non-decreasing sequences of length }\\ k-1 \textrm{ between } 1 \textrm{ and } n+1}\\
+    &= n\times \textrm{\mulnom{n+1}{k-1}}
+\end{align*}
+\end{description}
+This completes the proof
+\end{proof}
+
+\begin{ex}
+    \item Prove the following by combinatorial arguments $$\textrm{\mulnom{n}{k}}=\sum\limits_{m=1}^{n}\textrm{\mulnom{m}{k-1}}$$ \emph{Hint: Look for bijection to number of non-decreasing subsequences}
+    \item Prove the following by combinatorial arguments $$\sum\limits_{k=0}^{m}\textrm{\mulnom{n}{k}}=\textrm{\mulnom{n+1}{m}}$$ \emph{Hint: Look for bijection to Voting problem}
+    \item Prove the following by combinatorial arguments $$\textrm{\mulnom{n}{k}}=\sum\limits_{m=0}^{n}\binom{n}{m}\textrm{\mulnom{m}{k-m}}$$
+\end{ex}
+
