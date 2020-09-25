@@ -9,14 +9,14 @@ How many paths are there in the grid from $(0,0)$ to $(n,n)$ that avoids crossin
 We first define what \textit{crossing the diagonal} means. The diagonal consists of the points of the form $(i,i)$, $i\in\{0,\ldots, n\}$. A path $((u_0,v_0), \ldots, (u_{2n},v_{2n}))$ is said to be crossing the diagonal if it \textit{intersects} through the diagonal and goes to some point below the diagonal. Mathematically, a path is a diagonal crossing path if $\exists~i$ such that $u_i>v_i$. In particular, $\exists i: u_i = v_i+1$ (refer fig. \ref{fig:diagonal-crossing-path} for example. Any diagonal crossing path must necessarily pass through one of the red dots). Equivalently, in a diagonal avoiding path $\forall i\in\{0,\ldots, 2n\}, v_i\ge u_i$. A sample \emph{diagonal-avoiding path} is shown in the fig. \ref{fig:diagonal-avoiding-path} %\anote{explain $u_i = v_i+1$}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{diagonal-crossing.jpeg}
+    \includegraphics[width=0.7\linewidth]{images/diagonal-crossing.jpeg}
     \caption{Diagonal crossing paths. Note that path in (a) is crossing the diagonal at $(0,0)$}
     \label{fig:diagonal-crossing-path}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.4\linewidth]{diagonal-avoiding-path.png}
+    \includegraphics[width=0.4\linewidth]{images/diagonal-avoiding-path.png}
     \caption{A diagonal avoiding path. Observe that it can still touch the diagonal}
     \label{fig:diagonal-avoiding-path}
 \end{figure}
@@ -83,7 +83,7 @@ Let us define the following path translation:  Let $\pi=(0,0), (u_1,v_1), \ldots
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{reflecting-path.jpeg}
+    \includegraphics[width=0.7\linewidth]{images/reflecting-path.jpeg}
     \caption{Point P in a diagonal crossing path and the reflected path after P}
     \label{fig:reflecting-path}
 \end{figure}

@@ -5,7 +5,7 @@
 Lets recall \emph{Euler's problem} first. Consider a convex polygon with $n+2$ edges. Euler's problem is the number of ways of triangulating it (partition the polygon into triangles) by drawing non-crossing diagonals. (Refer fig. \ref{fig:Euler's-polygon}). We know that number of non-crossing diagonals in a polygon of $n+2$ edges is $n-1$ (proof follows from a simple induction) and from those $n-1$ non-crossing diagonals, we have our polygon partitioned into $n$ triangles. Let's associate each of the triangles with a vertex (green dots in the fig. \ref{fig:Euler's-polygon}). Observe that if two triangles share an edge, it must be one of the diagonals (no two triangles can share an edge because of non-crossing diagonals). Now, let's connect the vertices whose corresponding triangles share an edge. Any edge connecting two of these vertices crosses a diagonal. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.4\linewidth]{polygon.png}
+    \includegraphics[width=0.4\linewidth]{images/polygon.png}
     \caption{Partitioning a polygon into triangles by non-crossing diagonals. Observe that green dots in each triangle associates the triangle with a vertex}
     \label{fig:Euler's-polygon}
 \end{figure}
@@ -15,13 +15,13 @@ Now, consider a polygon edge $e$. For every polygon edge surrounding a vertex (o
 \end{claim}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.4\linewidth]{polygon-tree.png}
+    \includegraphics[width=0.4\linewidth]{images/polygon-tree.png}
     \caption{Polygon with vertices connected to form a tree}
     \label{fig:tree-in-polygon}
 \end{figure}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.4\linewidth]{tree.png}
+    \includegraphics[width=0.4\linewidth]{images/tree.png}
     \caption{Tree formed by connecting vertices}
     \label{fig:tree}
 \end{figure}
@@ -41,7 +41,7 @@ Here is the first attempt:
 \noindent \underline{Attempt 1:} First natural approach can be to add a leaf node to all non-full (internal nodes having only one child) nodes, as shown in figure~\ref{fig:bt-fbt-attempt1}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{binary-to-full-binary-1.png}
+    \includegraphics[width=0.7\linewidth]{images/binary-to-full-binary-1.png}
     \caption{Binary to full binary tree attempt1: adding a child node to each non full node}
     \label{fig:bt-fbt-attempt1}
 \end{figure}
@@ -49,7 +49,7 @@ Here is the first attempt:
 But notice that this transformation is not injective. For example, it can be observed that  both the trees in figure~\ref{fig:bt-fbt-attempt1-issue} map to same full binary tree.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{binary-to-full-binary-2.png}
+    \includegraphics[width=0.7\linewidth]{images/binary-to-full-binary-2.png}
     \caption{Two different binary trees that map to same full binary tree}
     \label{fig:bt-fbt-attempt1-issue}
 \end{figure}
@@ -63,7 +63,7 @@ Lets try a slightly different approach. Given a binary tree, do the following:
 Figure~\ref{fig:binary-to-full-solution} shows the full binary tree constructed in this way for the same binary tree as in Figure~\ref{fig:bt-fbt-attempt1}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\linewidth]{full-binary-3.png}
+    \includegraphics[width=0.5\linewidth]{images/full-binary-3.png}
     \caption{Full binary tree for the (non-full) binary tree given in fig~\ref{fig:bt-fbt-attempt1}. Notice that all the leaf nodes are added during transformation}
     \label{fig:binary-to-full-solution}
 \end{figure}
@@ -80,7 +80,7 @@ A plane tree is a rooted tree with an ordering among the children. A plane tree 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\linewidth]{plane-tree.png}
+    \includegraphics[width=0.8\linewidth]{images/plane-tree.png}
     \caption{An example of plane trees and its transformation to a binary tree}
     \label{fig:plane-tree-1}
 \end{figure}
